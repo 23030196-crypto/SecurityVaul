@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.secretvaul.controller.LoginController"
+      alignment="CENTER" spacing="15"
+      styleClass="fondo-login">
+
+    <!-- Cargo los estilos desde el archivo CSS -->
+    <stylesheets>
+        <String fx:value="@style.css"/>
+    </stylesheets>
+
+    <Label text="SecureVault" styleClass="titulo-app"/>
+    <Label text="Gestor seguro de contraseñas" styleClass="subtitulo"/>
+
+    <VBox spacing="10" maxWidth="300">
+        <TextField fx:id="txtUsuario" promptText="Usuario" styleClass="campo-texto"/>
+        <PasswordField fx:id="txtPassword" promptText="Contraseña" styleClass="campo-texto"/>
+
+        <Label fx:id="lblError" text="" styleClass="label-error"/>
+
+        <Button fx:id="btnLogin" text="Iniciar sesión"
+                onAction="#handleLogin" maxWidth="Infinity"
+                styleClass="boton-principal"/>
+
+        <Button text="Registrarse" onAction="#handleRegistro"
+                maxWidth="Infinity" styleClass="boton-principal"/>
+    </VBox>
+</VBox>

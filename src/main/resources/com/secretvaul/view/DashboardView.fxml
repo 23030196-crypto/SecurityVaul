@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.secretvaul.controller.DashboardController"
+      spacing="12" styleClass="fondo-pantalla"
+      prefWidth="800" prefHeight="560">
+
+    <!-- Cargo los estilos desde el archivo CSS -->
+    <stylesheets>
+        <String fx:value="@style.css"/>
+    </stylesheets>
+
+    <!-- Barra superior -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="SecureVault" styleClass="titulo-app"/>
+        <HBox HBox.hgrow="ALWAYS"/>
+        <Label fx:id="lblUsuario" text="Usuario"/>
+        <Button text="Cerrar sesión" onAction="#cerrar" styleClass="boton-principal"/>
+    </HBox>
+
+    <Separator/>
+
+    <!-- Barra de búsqueda y filtros -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="txtBuscar" promptText="Buscar..."
+                   prefWidth="300" onKeyReleased="#buscar"
+                   styleClass="campo-texto"/>
+
+        <!-- ComboBox para cambiar la estrategia de búsqueda -->
+        <ComboBox fx:id="cmbFiltro" onAction="#cambiarfiltro"/>
+
+        <HBox HBox.hgrow="ALWAYS"/>
+
+        <Button text="+ Nueva credencial" onAction="#nuevaCred" styleClass="boton-principal"/>
+        <Button text="Ver gráficas" onAction="#graficas" styleClass="boton-principal"/>
+    </HBox>
+
+    <!-- Tabla principal de credenciales -->
+    <TableView fx:id="tablaCredenciales" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="colSitio"    text="Sitio"       prefWidth="180"/>
+            <TableColumn fx:id="colCorreo"   text="Correo"      prefWidth="200"/>
+            <TableColumn fx:id="colPass"     text="Contraseña"  prefWidth="120"/>
+            <TableColumn fx:id="colNotas"    text="Notas"       prefWidth="180"/>
+            <TableColumn fx:id="colAcciones" text="Acciones"    prefWidth="110"/>
+        </columns>
+        <placeholder>
+            <Label text="No hay credenciales guardadas aún."/>
+        </placeholder>
+    </TableView>
+
+    <Label fx:id="lblEstado" text="" styleClass="label-estado"/>
+</VBox>
