@@ -75,8 +75,8 @@ public class DashboardController {
             private final HBox hbox   = new HBox(6, btnVer, btnDel);
 
             {
-                btnVer.setStyle("-fx-background-color: #1C1C1C; -fx-text-fill: white; -fx-background-radius:4;");
-                btnDel.setStyle("-fx-background-color: #1C1C1C; -fx-text-fill: white; -fx-background-radius:4;");
+                btnVer.getStyleClass().add("boton-tabla");
+                btnDel.getStyleClass().add("boton-tabla");
 
                 btnVer.setOnAction(e -> mostrarPassword(getTableView().getItems().get(getIndex())));
                 btnDel.setOnAction(e -> eliminarCredencial(getTableView().getItems().get(getIndex())));
@@ -127,10 +127,13 @@ public class DashboardController {
     private void nuevaCred() {
         try {
             FXMLLoader loader = new FXMLLoader(App.class.getResource("view/AddCredentialView.fxml"));
+            Scene scene = new Scene(loader.load());
+            scene.getStylesheets().add(App.class.getResource("view/style.css").toExternalForm());
+
             Stage dialog = new Stage();
             dialog.initModality(Modality.APPLICATION_MODAL);
             dialog.setTitle("Nueva credencial");
-            dialog.setScene(new Scene(loader.load()));
+            dialog.setScene(scene);
             AddCredentialController ctrl = loader.getController();
             ctrl.inicializar(usuarioActivo, credencialService);
             dialog.showAndWait();
@@ -144,10 +147,13 @@ public class DashboardController {
     private void mostrarPassword(Credencial credencial) {
         try {
             FXMLLoader loader = new FXMLLoader(App.class.getResource("view/AuthView.fxml"));
+            Scene scene = new Scene(loader.load());
+            scene.getStylesheets().add(App.class.getResource("view/style.css").toExternalForm());
+
             Stage dialog = new Stage();
             dialog.initModality(Modality.APPLICATION_MODAL);
             dialog.setTitle("Autenticación requerida");
-            dialog.setScene(new Scene(loader.load()));
+            dialog.setScene(scene);
             AuthController ctrl = loader.getController();
             ctrl.inicializar(credencial, usuarioActivo, credencialService);
             dialog.showAndWait();
@@ -171,9 +177,12 @@ public class DashboardController {
     private void graficas() {
         try {
             FXMLLoader loader = new FXMLLoader(App.class.getResource("view/GraficasView.fxml"));
+            Scene scene = new Scene(loader.load());
+            scene.getStylesheets().add(App.class.getResource("view/style.css").toExternalForm());
+
             Stage ventana = new Stage();
             ventana.setTitle("Estadísticas");
-            ventana.setScene(new Scene(loader.load()));
+            ventana.setScene(scene);
             GraficasController ctrl = loader.getController();
             ctrl.inicializar(usuarioActivo, credencialService);
             ventana.show();

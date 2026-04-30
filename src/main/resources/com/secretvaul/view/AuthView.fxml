@@ -1,37 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import java.lang.String?>
 
 <VBox xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.secretvaul.controller.AuthController"
       spacing="16" alignment="CENTER"
-      style="-fx-background-color: #F5F5F5; -fx-padding: 40;"
+      styleClass="fondo-login"
       prefWidth="360">
 
-    <Label text="Verificación requerida"
-           style="-fx-text-fill: Black; -fx-font-size: 17; -fx-font-weight: bold;"/>
+    <Label text="Verificación requerida" styleClass="titulo-seccion"/>
 
     <Label text="Ingresa tu contraseña maestra para ver esta credencial."
-           style="-fx-text-fill: #Black; -fx-font-size: 12; -fx-text-alignment: center;"
-           wrapText="true"/>
-    <PasswordField fx:id="txtPasswordMaestra" promptText="Contraseña maestra"
-                   style="-fx-background-color: #FAFAFA; -fx-text-fill: BDBDBD;
-                          -fx-prompt-text-fill: #BDBDBD; -fx-padding: 10; -fx-background-radius: 6;"/>
-    <Label fx:id="lblError" text=""
-           style="-fx-text-fill: #FAFAFA; -fx-font-size: 11;"/>
+           styleClass="texto-descripcion" wrapText="true"/>
+
+    <PasswordField fx:id="txtPasswordMaestra" promptText="Contraseña maestra"/>
+
+    <Label fx:id="lblError" text="" styleClass="label-error"/>
+
     <VBox fx:id="panelResultado" spacing="8" visible="false"
-          style="-fx-background-color: #2d2d2d; -fx-padding: 14; -fx-background-radius: 8;">
-        <Label text="Contraseña descifrada:"
-               style="-fx-text-fill: #BDBDBD; -fx-font-size: 11;"/>
-        <Label fx:id="lblPasswordDescifrada" text=""
-               style="-fx-text-fill: #BDBDBD; -fx-font-size: 15; -fx-font-weight: bold;"/>
+          styleClass="panel-resultado">
+        <Label text="Contraseña descifrada:" styleClass="label-panel-titulo"/>
+        <Label fx:id="lblPasswordDescifrada" text="" styleClass="label-password-visible"/>
     </VBox>
+
     <HBox spacing="10">
         <Button text="Verificar" onAction="#handleVerificar"
-                HBox.hgrow="ALWAYS" maxWidth="Infinity"
-                style="-fx-background-color: #2d2d2d; -fx-text-fill: white; -fx-padding: 10; -fx-background-radius: 6; -fx-cursor: hand;"/>
-        <Button text="Cerrar" onAction="#handleCerrar"
-                HBox.hgrow="ALWAYS" maxWidth="Infinity"
-                style="-fx-background-color: #2d2d2d; -fx-text-fill: white; -fx-padding: 10; -fx-background-radius: 6; -fx-cursor: hand;"/>
+                HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
+        <Button text="Cerrar"    onAction="#handleCerrar"
+                HBox.hgrow="ALWAYS" maxWidth="Infinity"/>
     </HBox>
 </VBox>
